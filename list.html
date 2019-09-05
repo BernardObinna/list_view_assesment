@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="search-bar">
+            <img src="" alt="">
+            <div class="search-bar-input">
+                <input v-model="search" v-on:keyup="performSearch" type="text">
+                <img src="./search-icon.png" alt="">
+            </div>
+
+        </div>
+
+        <!-- <button v-on:click="fetchPics"> fetch</button> -->
+
+        <div v-if="images && !opened">
+            <div v-for="image in displayedItems">
+                <div @click="open(image)" class="entry">
+
+                    <img :src="image.thumbnailUrl" alt="">
+                    <div class="entry-body">
+                        <h3>{{image.title}}</h3>
+
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto odio sunt
+                            debitis,
+                            fugit
+                            <!-- voluptates porro alias nihil dolores aut suscipit reprehenderit quaerat quibusdam a!
+                            Suscipit
+                            minima -->
+                            nostrum cumque exercitationem?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div v-if="opened" class="selected">
+            <img :src="selected.url" alt="">
+            <div>
+                <div style="display:block">
+
+                    <h3>{{selected.title}}</h3>
+                    <p>lorem is ssimply</p>
+                </div>
+                <button>GO</button>
+            </div>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo qui quis ipsam quos libero fugit?
+                Maiores facere cupiditate nulla, doloremque temporibus, delectus explicabo a error animi, nobis quidem
+                aspernatur sapiente.
+            </p>
+
+            <div class="selectedFooter">
+                <button>call</button>
+                <button>text</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+
+<!-- <script>
+    new Vue({
+        el: "#app",
+        // define data - initial display text
+        data: {
+            message: "You got to let me know",
+            images: []
+        },
+
+        methods: {
+            fetchPics: function (e) {
+                // this.message = e;
+                fetch("https://jsonplaceholder.typicode.com/photos")
+                    .then(response => response.json())
+                    .then(json => this.images = json);
+
+                console.log(this.images);
+            }
+        }
+    });
+</script> -->
+
+</html>
